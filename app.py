@@ -9,7 +9,7 @@ import os
 
 
 # Page setup
-st.set_page_config(page_title="❤️ Anemia Sense", layout="centered")
+st.set_page_config(page_title="❤️ Anemia ~ Sense", layout="centered")
 
 # Background and font styling
 page_bg_img = f'''
@@ -25,7 +25,7 @@ background-attachment: fixed;
 color: #FF1493;
 font-family: 'Poppins', sans-serif;
 font-weight: bold;
-}}
+}} 
 
 h1, h2, h3, h4, h5, h6, .stTitle, .stSubheader {{
     color: #FF1493 !important;
@@ -117,7 +117,7 @@ if st.session_state.logged_in:
 # Login or Signup
 if not st.session_state.logged_in:
     if st.session_state.page == 'login':
-        st.markdown("### ❤️ Anemia Sense")
+        st.markdown("### ❤️ Anemia  ~ Sense")
         st.session_state.username = st.text_input("Username")
         st.session_state.password = st.text_input("Password", type="password")
         col1, col2 = st.columns(2)
@@ -131,7 +131,7 @@ if not st.session_state.logged_in:
                 else:
                     st.error("Invalid credentials")
         with col2:
-            if st.button("Create Account"):
+               if st.button("Create Account ", on_click=lambda: go_to("signup")):
                 st.session_state.page = 'signup'
 
     elif st.session_state.page == 'signup':
@@ -163,7 +163,7 @@ elif st.session_state.logged_in:
             if st.session_state.gender:
                 st.button("Next ", on_click=lambda: go_to("hemoglobin"))
 
-    elif st.session_state.page == 'hemoglobin':
+    elif st.session_state.page == 'hemoglobin': 
         st.markdown("### Enter Hemoglobin (g/dL)")
         value = st.slider("Hemoglobin", 0.0, 100.0, 13.0, 0.1)
         if value:
@@ -296,6 +296,6 @@ elif st.session_state.logged_in:
         ax.set_title(f"📊 Anemia Test Results - {result}")
         st.pyplot(fig)
 
-        if st.button("Return to Gender"):
+       
+        if st.button("Return to Gender ", on_click=lambda: go_to("gender")):
             go_to("gender")
-
